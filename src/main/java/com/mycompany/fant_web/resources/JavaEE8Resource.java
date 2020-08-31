@@ -4,6 +4,8 @@ import com.mycompany.fant_web.authentication.Authentication;
 import java.net.Authenticator;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -14,6 +16,7 @@ import javax.ws.rs.core.Response;
 public class JavaEE8Resource {
     
     @GET
+    @Produces(MediaType.TEXT_PLAIN)
     public String Authentication(){
         return new Authentication("Petter", "Petterbassen", "123", "petter@mail.com").toJson();
         }
