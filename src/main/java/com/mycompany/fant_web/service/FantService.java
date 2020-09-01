@@ -8,6 +8,7 @@ package com.mycompany.fant_web.service;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author Bruker
@@ -23,4 +24,6 @@ public class FantService {
            list.add(i2);
            return list;
         }
+        
+    
 }

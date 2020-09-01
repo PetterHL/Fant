@@ -7,6 +7,7 @@ package com.mycompany.fant_web.service;
 
 import java.util.Date;
 
+
 /**
  *
  * @author Bruker
@@ -29,6 +30,7 @@ public class Item {
         this.itemName = itemName;
         this.price = price;
     }
+  
 
     public int getItemId() {
         return itemId;
