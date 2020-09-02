@@ -1,29 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.fant_web.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 
 /**
- *
- * @author Bruker
+ * * * @author Bruker
  */
 public class FantService {
-    
-    
-        public List<Item> getAllItems(){
-           Item i1 = new Item(1, "computer", 2000);
-           Item i2 = new Item(2, "car", 20000);
-           List<Item> list = new ArrayList<>();
-           list.add(i1);
-           list.add(i2);
-           return list;
-        }
-        
-    
+
+    @PersistenceContext
+    EntityManager em;
+
+    @Path("item")
+    public List<Item> getAllITems() {
+        return em.createNamedQuery(Item.FIND_ALL_ITEMS, Item.class).getResultList();
+    }
 }

@@ -5,73 +5,42 @@
  */
 package com.mycompany.fant_web.service;
 
+import static com.mycompany.fant_web.service.Item.FIND_ALL_ITEMS;
+import java.time.ZoneOffset;
+import java.util.Calendar;
 import java.util.Date;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import lombok.Data;
 
 /**
  *
- * @author Bruker
+ * @author sigur
+ *
  */
+@Entity
+@Data 
+@NamedQuery(name = FIND_ALL_ITEMS,
+        query= "select i from Item i")
 public class Item {
-    
-    private int itemId;
-    private String itemName;
-    private Date date;
-    private long price;
-    private String Creator;
-    
-    
-    public Item(){
-        
+    public static final String FIND_ALL_ITEMS = "Item.findAllItems";
+
+    @Id
+    private long id;
+    private String item;
+    private Date created;
+    private String creator;
+
+    public Item() {
+
     }
 
-    public Item(int itemId, String itemName, long price) {
-        this.itemId = itemId;
-        this.itemName = itemName;
-        this.price = price;
-    }
-  
-
-    public int getItemId() {
-        return itemId;
+    public Item(long id, String item, String creator) {
+        this.id = id;
+        this.item = item;
+        this.created = Date.from(java.time.LocalDateTime.now().toInstant(ZoneOffset.UTC));
+        this.creator = creator;
     }
 
-    public String getItemName() {
-        return itemName;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public String getCreator() {
-        return Creator;
-    }
-
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
-    }
-
-    public void setCreator(String Creator) {
-        this.Creator = Creator;
-    }
-    
- 
-    
 }
