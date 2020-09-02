@@ -15,15 +15,8 @@ import javax.ws.rs.core.Response;
  *
  * @author 
  */
-@Path("items")
-public class JavaEE8Resource {
 
-    FantService fantService = new FantService();
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Item> getITem() {
-        return fantService.getAllItems();
-    }
+public class JavaEE8Resource {
     
     
  

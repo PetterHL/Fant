@@ -6,7 +6,7 @@
 package com.mycompany.fant_web.authentication;
 
 
-import com.mycompany.fant_web.service.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

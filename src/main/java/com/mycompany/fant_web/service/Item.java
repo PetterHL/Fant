@@ -5,42 +5,32 @@
  */
 package com.mycompany.fant_web.service;
 
-import static com.mycompany.fant_web.service.Item.FIND_ALL_ITEMS;
-import java.time.ZoneOffset;
-import java.util.Calendar;
-import java.util.Date;
+import static com.mycompany.fant_web.service.Item.LIST_ALL_ITEMS;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-/**
- *
- * @author sigur
- *
- */
+
 @Entity
 @Data 
-@NamedQuery(name = FIND_ALL_ITEMS,
+@AllArgsConstructor
+@NamedQuery(name = LIST_ALL_ITEMS,
         query= "select i from Item i")
-public class Item {
-    public static final String FIND_ALL_ITEMS = "Item.findAllItems";
 
-    @Id
-    private long id;
-    private String item;
-    private Date created;
-    private String creator;
-
+public class Item {   
+    
     public Item() {
 
     }
+    public static final String LIST_ALL_ITEMS = "Item.findAllItems";
+    @Id
+    public long id;
+    public String item;
+    public String creator;
+ 
 
-    public Item(long id, String item, String creator) {
-        this.id = id;
-        this.item = item;
-        this.created = Date.from(java.time.LocalDateTime.now().toInstant(ZoneOffset.UTC));
-        this.creator = creator;
-    }
+   
 
 }
