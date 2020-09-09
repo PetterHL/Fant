@@ -45,4 +45,5 @@ public class FantService {
         return Response.ok().build();
         
     }
+    
 }

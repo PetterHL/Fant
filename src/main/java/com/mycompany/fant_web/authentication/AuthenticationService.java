@@ -71,5 +71,38 @@ import javax.ws.rs.POST;
 @Log
 public class AuthenticationService {
 
-
+    
+    @PersistenceContext
+    EntityManager em;
+    
+  
+    @Inject
+    JsonWebToken principal;
+    
+ @GET
+ @Path("login")
+    public Response login(
+            @QueryParam("uid") @NotBlank String uid,
+            @QueryParam("pwd") @NotBlank String pwd) {
+        
+        
+       
+        return Response.ok().build();
+    }
+    
+  @POST
+  @Path("create")
+    public Response createUser(@FormParam("uid") String uid, 
+            @FormParam("pwd") String pwd) {
+        User user = em.find(User.class, uid);
+        user = new User();
+        
+         return Response.ok(em.merge(user)).build();
+        
+    }
+  @GET
+  @Path("currentuser")    
+    public User getCurrentUser() {
+        return em.find(User.class, principal.getName());
+    }
 }
